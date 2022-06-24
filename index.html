@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <title>TechnicalAB</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+        }
+        .h1-p{
+            padding: 10px;
+            margin-top: 10px;
+        }
+        #div1,
+        #div2,
+        #div3,
+        #div4,
+        #div5,
+        #div6,
+        #div7,
+        #div8,
+        #div9 {
+
+            border: 4px solid white;
+            height: 200px;
+            width: 200px;
+            float: left;
+            font-size: 150px;
+            text-align: center;
+            color: white;
+
+        }
+
+        #div1,
+        #div4,
+        #div7 {
+            clear: left;
+        }
+
+        .container {
+            margin-top: 10px;
+        }
+
+        #div1,
+        #div4,
+        #div7 {
+            border-left: none;
+        }
+
+        #div3,
+        #div6,
+        #div9 {
+            border-right: none;
+        }
+
+        #div7,
+        #div8,
+        #div9 {
+            border-bottom: none;
+        }
+
+        #div1,
+        #div2,
+        #div3 {
+            border-top: none;
+        }
+
+        .col-md-6 {
+            justify-content: center;
+            margin-left: 30px;
+        }
+        .container h1:after {
+    background: linear-gradient( #dfe224 0%,#effa20 0%, #dcd50e 100%);
+    content: "";
+    display: block;
+    width: 120px;
+    height: 3px;
+    margin: 10px auto;
+}
+        @media(max-width: 600px){
+            body{
+            background-color: black;
+            color: white;
+        }
+            #div1,
+        #div2,
+        #div3,
+        #div4,
+        #div5,
+        #div6,
+        #div7,
+        #div8,
+        #div9 {
+
+            border: 4px solid white;
+            height: 90px;
+            width: 90px;
+            float: left;
+            font-size: 60px;
+            text-align: center;
+            color: white;
+
+        }
+        #div1,
+        #div4,
+        #div7 {
+            border-left: none;
+        }
+
+        #div3,
+        #div6,
+        #div9 {
+            border-right: none;
+        }
+
+        #div7,
+        #div8,
+        #div9 {
+            border-bottom: none;
+        }
+
+        #div1,
+        #div2,
+        #div3 {
+            border-top: none;
+        }
+        .h1-p{
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .container h1:after {
+            background: linear-gradient( #dfe224 0%,#effa20 0%, #dcd50e 100%);
+    content: "";
+    display: block;
+    width: 120px;
+    height: 3px;
+    margin: 10px auto;
+}
+
+
+
+        }
+    </style>
+
+    <script>
+        let count = 1;
+        let k = 1;
+        function fill(control) {
+            if (count <= 9) {
+                if (count % 2 != 0) {
+                    document.getElementById(control.id).innerHTML = "X";
+                }
+                else {
+                    document.getElementById(control.id).innerHTML = "O";
+                }
+                count++;
+                if (checkWin()) {
+                    alert("Winner");
+                    reset();
+
+                }
+            }
+            else {
+                alert("match draw");
+                reset();
+            }
+        }
+
+
+        function reset() {
+            for (var i = 1; i <= 9; i++) {
+                document.getElementById('div' + i).innerHTML = "";
+            }
+            count = 1;
+        }
+
+
+        function getData(div) {
+            return document.getElementById(div).innerHTML;
+
+        }
+        function checkWin(div) {
+            if ((getData('div1') != "" && getData('div2') != "" && getData('div3') != "" && getData('div1') == getData('div2') && getData('div2') == getData('div3'))||(getData('div4') != "" && getData('div5') != "" && getData('div6') != "" && getData('div4') == getData('div5') && getData('div5') == getData('div6'))||(getData('div7') != "" && getData('div8') != "" && getData('div9') != "" && getData('div7') == getData('div8') && getData('div8') == getData('div9'))||(getData('div1') != "" && getData('div4') != "" && getData('div7') != "" && getData('div1') == getData('div4') && getData('div4') == getData('div7'))||(getData('div2') != "" && getData('div5') != "" && getData('div8') != "" && getData('div2') == getData('div5') && getData('div5') == getData('div8'))||(getData('div3') != "" && getData('div6') != "" && getData('div9') != "" && getData('div3') == getData('div6') && getData('div6') == getData('div9'))||(getData('div1') != "" && getData('div5') != "" && getData('div9') != "" && getData('div1') == getData('div5') && getData('div5') == getData('div9'))||(getData('div3') != "" && getData('div5') != "" && getData('div7') != "" && getData('div3') == getData('div5') && getData('div5') == getData('div7'))) {
+                return true;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="h1-p">
+        <h1 class="text-center h1-p">Play Game Now!</h1>
+    </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div id="div1" onclick="fill(this)"></div>
+                <div id="div2" onclick="fill(this)"></div>
+                <div id="div3" onclick="fill(this)"></div>
+                <div id="div4" onclick="fill(this)"></div>
+                <div id="div5" onclick="fill(this)"></div>
+                <div id="div6" onclick="fill(this)"></div>
+                <div id="div7" onclick="fill(this)"></div>
+                <div id="div8" onclick="fill(this)"></div>
+                <div id="div9" onclick="fill(this)"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+</html>
